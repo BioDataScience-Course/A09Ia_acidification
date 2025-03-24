@@ -3,7 +3,7 @@
 Doo et al. (2020) ont étudié les effets d'une acidification et d'une augmentation de la température sur le foraminifère vertèbre *Marginopora vertebralis* Quoy & Gaimard 1830. Ils ont également étudié en parallèle ces effets lorsque *M. vertebralis* est en présence de l'un de ses hôtes, l'algue rouge *Laurencia intricata* J.V.Lamouroux 1813.
 
 Les auteurs ont publié les données de cette étude (Doo et al. 2021). Vous utiliserez une partie de ces données pour appliquer l'analyse de variance à un facteur et le test de Kruskal-Wallis. Les données
-originales se trouvent dans le dossier `data/raw`, mais vous utiliserez les données remaniées `growth.rds` qui se trouvent dans le dossier `data`.
+originales se trouvent dans le dossier `data/raw`, mais vous utiliserez les données remaniées `growth.rds` qui se trouvent dans le dossier `data`. Ce projet correspond au template <https://github.com/BioDataScience-Course/A09Ia_acidification>.
 
 ## Objectifs
 
@@ -17,7 +17,7 @@ Ce projet est individuel et cadré. Il permet de démontrer que vous avez acquis
 
 Complétez le document `vertebralis_notebook.qmd`.
 
-N'oubliez pas d'effectuer un “Rendu” du document en HTML à la fin de votre travail pour vérifier que tout fonctionne bien, et corrigez les erreurs éventuelles rencontrées à ce stade (très important !) Vous avez une batterie de tests à votre disposition pour des vérifications plus poussées de vos résultats (onglet "Construire" -> bouton "Construire tout"). Vérifiez également que votre
+N'oubliez pas d'effectuer un “Rendu” du document en HTML à la fin de votre travail pour vérifier que tout fonctionne bien, et corrigez les erreurs éventuelles rencontrées à ce stade (très important ! Sans quoi il ne sera pas possible de donner des points à votre travail) Vous avez une batterie de tests à votre disposition pour des vérifications plus poussées de vos résultats (onglet "Construire" -> bouton "Construire tout"). Vérifiez également que votre
 dernier commit a bien été pushé sur GitHub avant la deadline.
 
 # Références

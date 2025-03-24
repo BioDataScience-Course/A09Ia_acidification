@@ -5,7 +5,6 @@
 SciViews::R(lang = "fr")
 
 
-
 # Importation des données -------------------------------------------------
 
 # Note: les données originales sont récupérées depuis le site Dryad, dézippées
@@ -39,7 +38,7 @@ growth <- labelise(growth,
     Temp        = "Température",
     Association = "Association",
     Wet_Weight  = "Croissance en masse/jour",
-    Condition     = "Condition"),
+    Condition   = "Condition"),
   units = list(
     Temp = "°C",
     Wet_Weight = "%")

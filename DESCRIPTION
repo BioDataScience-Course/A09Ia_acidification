@@ -1,8 +1,8 @@
-Package: A10Ia_acidification_effect
+Package: A09Ia_acidification_effect
 Type: Package
-Version: 2.0.0
+Version: 3.0.0
 Title: Croissance d'un foraminifère en présence d’acidification et d’augmentation de la température
-Description: Projet individuel cadré du module 10 du cours SDD I à l'UMONS
+Description: Projet individuel cadré du module 9 du cours SDD I à l'UMONS
 Authors@R: c(
   person("Guyliann", "Engels", role = c("aut", "cre"),
     email = "guyliann.engels@umons.ac.be",
@@ -11,10 +11,10 @@ Authors@R: c(
     email = "phgrosjean@sciviews.org",
     comment = c(ORCID = "0000-0002-2694-9471"))
   )
-Depends: R (>= 4.2.3)
-SystemRequirements: SciViews Box 2023 (https://www.sciviews.org/software/svbox/)
+Depends: R (>= 4.3.3)
+SystemRequirements: SciViews Box 2024 (https://www.sciviews.org/software/svbox/)
 License: CC BY-NC-SA 4.0
-URL: https://github.com/BioDataScience-Course/A10Ia_acidification_effect
-BugReports: https://github.com/BioDataScience-Course/A10Ia_acidification_effect/issues
+URL: https://github.com/BioDataScience-Course/A09Ia_acidification_effect
+BugReports: https://github.com/BioDataScience-Course/A09Ia_acidification_effect/issues
 Encoding: UTF-8
 Language: fr-FR
