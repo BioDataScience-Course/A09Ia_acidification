@@ -26,7 +26,7 @@ Le but de notre étude consiste, sur base des résultats de l'étude précédent
 
 Les auteurs de l'étude citée dans l'introduction ont publié leurs données sous licence CC0 1.0 [@2021Doodata]. Nous utiliserons ici les mesures relatives à la croissance moyenne journalière.
 
-L'analyse est réalisée avec le logiciel R (`r R.version.string`) et en particulier les packages {inferit} version `r packageVersion("inferit")` et {modelit} version `r packageVersion("modelit")` dans la [SciViews Box 2023](https://www.sciviews.org/software/svbox/). [Saturn Cloud](https://saturncloud.io/) (Linux Ubuntu 22.04) est utilisé pour exécuter le code et compiler la version HTML de ce bloc-notes.
+L'analyse est réalisée avec le logiciel R (`r R.version.string`) et en particulier les packages {inferit} version `r packageVersion("inferit")` et {modelit} version `r packageVersion("modelit")` dans la [SciViews Box 2024](https://www.sciviews.org/software/svbox/). [Saturn Cloud](https://saturncloud.io/) (Linux Ubuntu 22.04) est utilisé pour exécuter le code et compiler la version HTML de ce bloc-notes.
 
 Le seuil $\alpha$ de tous les tests est fixé à l'avance à 5%.
 
@@ -68,7 +68,7 @@ Dans cette partie, nous n'utilisons que les mesures de croissance de *M. vertebr
 
 <!--% Sélectionnez uniquement les observations réalisées sur *M. vertebralis* seul et placez ces données dans `growth1`. Ensuite, affichez le tableau correctement formaté présentant les premières et dernières lignes de ce tableau. -->
 
-```{r filter1, record='RODFS', object='growth1'}
+```{r filter1, warning=FALSE, record='RODFS', object='growth1'}
 growth1 <- ___
 ___
 ```
@@ -77,7 +77,7 @@ En voici les caractéristiques principales :
 
 <!--% Réalisez un tableau résumant l'expérience avec des descripteurs numériques pertinents, moyenne, écart type et nombre d'observations pour chaque condition. -->
 
-```{r table1, record='RODFS', object='growth1_tab'}
+```{r table1, warning=FALSE, record='RODFS', object='growth1_tab'}
 growth1 %>.%
   ___(., ___) %>.%
   ___(.,
@@ -90,7 +90,7 @@ tabularise(growth1_tab, auto.labs = FALSE)
 
 <!--% Réalisez un nuage de points pertinent qui présente les données en semi-transparence avec des boites de dispersion parallèles et les moyennes en rouge par condition pour illustrer la situation. -->
 
-```{r plot1, record='RNP', arg='labels'}
+```{r plot1, record='RNCS'}
 chart(data = ___, ___) +
   ___ +
   ___(width = 0.05, alpha = 0.5) +
@@ -144,7 +144,7 @@ Voici le résultat du test :
 
 <!--% Réalisez votre test en utilisant la variable `Condition` pour les groupes (qui est la combinaison de la variable `Temp` et de la variable `pH`). Sortez ce résultat de manière formatée à l'aide de `tabularise()`. -->
 
-```{r anova1, record='ROP', object='growth1_anova', arg='terms'}
+```{r anova1, warning=FALSE, record='ROP', object='growth1_anova', arg='terms'}
 growth1_anova <- ___
 ___(growth1_anova) |> tabularise()
 ```
@@ -173,9 +173,7 @@ ___
 
 -   L'homoscédasticité est vérifiée à l'aide d'un test de Bartlett dont les hypothèses sont :
 
-$$H_0: var_n = var_t = var_p = var_{tp}\ \mathrm{(homoscédasticité)}$$
-$$H_1: \exists(i, j) \mathrm{\ tel\ que\ } var_i \neq var_j\ \mathrm{(hétéroscédasticité)}$$
-<!-- Effectuez le test d'homoscédasticité qui convient ici. -->
+$$H_0: var_n = var_t = var_p = var_{tp}\ \mathrm{(homoscédasticité)}$$ $$H_1: \exists(i, j) \mathrm{\ tel\ que\ } var_i \neq var_j\ \mathrm{(hétéroscédasticité)}$$ <!-- Effectuez le test d'homoscédasticité qui convient ici. -->
 
 ```{r homos1, record='RNP', arg='method,data.name,p.value'}
 ___
@@ -256,6 +254,7 @@ ___
 <!--% Effectuez également les comparaisons multiples correspondantes et affichez-en uniquement le graphique. -->
 
 ```{r multcompkw1, record='ROP', object='growth1_kw_comp', arg='Analysis,connames'}
+set.seed(2903)
 growth1_kw_comp <- ___(data = ___, ___)
 # Renommer les niveaux pour correspondre à la sortie de nparcomp
 growth1_kw_comp$connames <- gsub("p\\( ([^ ]+) , ([^ ]+) \\)", "\\1-\\2",
@@ -290,14 +289,13 @@ select_answer(r"-{
 [] -   Pour les différences observées, le test non paramétrique indique une différence significative au seuil $\alpha$ de 5% mais pas le test paramétrique dans les comparaisons multiples.}-")
 ```
 
-
 ## Croissance du foraminifère en présence de l'algue rouge
 
 Nous utilisons les mesures de croissance de *M. vertebralis* sur son hôte *L. intricata*.
 
 <!--% Sélectionnez uniquement les observations réalisées sur *M. vertebralis* en présence de *L. intricata* et placez ces données dans `growth2`. Ensuite, affichez le tableau correctement formaté présentant les premières et dernières lignes de ce tableau. -->
 
-```{r filter2, record='RODFS', object='growth2'}
+```{r filter2, warning=FALSE, record='RODFS', object='growth2'}
 growth2 <- ___
 ___(growth2)
 ```
@@ -306,7 +304,7 @@ En voici les caractéristiques principales :
 
 <!--% Réalisez un tableau résumant l'expérience avec des descripteurs numériques pertinents, moyenne, écart type et nombre d'observations pour chaque condition. -->
 
-```{r table2, record='RODFS', object='growth2_tab'}
+```{r table2, warning=FALSE, record='RODFS', object='growth2_tab'}
 growth2 %>.%
   ___(., ___) %>.%
   ___(.,
@@ -319,7 +317,7 @@ tabularise(growth2_tab, auto.labs = FALSE)
 
 <!--% Réalisez un nuage de points pertinent qui présente les données en semi-transparence avec des boites de dispersion parallèles et les moyennes en rouge par condition pour illustrer la situation. -->
 
-```{r plot2, record='RNP', arg='labels'}
+```{r plot2, record='RNCS'}
 chart(data = ___, ___) +
   ___ +
   ___(width = 0.05, alpha = 0.5) +
@@ -373,7 +371,7 @@ Voici le résultat du test :
 
 <!--% Réalisez votre test en utilisant la variable `Condition` pour les groupes (qui est la combinaison de la variable `Temp` et de la variable `pH`). Sortez ce résultat de manière formatée à l'aide de `tabularise()`. -->
 
-```{r anova2, record='ROP', object='growth1_anova', arg='terms'}
+```{r anova2, warning=FALSE, record='ROP', object='growth1_anova', arg='terms'}
 growth2_anova <- ___
 ___(growth2_anova) |> ___()
 ```
@@ -402,8 +400,7 @@ ___
 
 -   L'homoscédasticité est vérifiée à l'aide d'un test de Bartlett dont les hypothèses sont :
 
-$$H_0: var_n = var_t = var_p = var_{tp}\ \mathrm{(homoscédasticité)}$$
-$$H_1: \exists(i, j) \mathrm{\ tel\ que\ } var_i \neq var_j\ \mathrm{(hétéroscédasticité)}$$
+$$H_0: var_n = var_t = var_p = var_{tp}\ \mathrm{(homoscédasticité)}$$ $$H_1: \exists(i, j) \mathrm{\ tel\ que\ } var_i \neq var_j\ \mathrm{(hétéroscédasticité)}$$
 
 <!-- Effectuez le test d'homoscédasticité qui convient ici. -->
 
