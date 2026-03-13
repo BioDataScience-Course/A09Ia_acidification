@@ -27,7 +27,18 @@ Complétez le document `vertebralis_notebook.qmd`. Le jeu de données à disposi
 N'oubliez pas d'effectuer un “Rendu” du document en HTML à la fin de votre travail pour vérifier que tout fonctionne bien, et corrigez les erreurs éventuelles rencontrées à ce stade (très important ! Sans quoi il ne sera pas possible de donner des points à votre travail) Vous avez une batterie de tests à votre disposition pour des vérifications plus poussées de vos résultats (onglet "Construire" -> bouton "Construire tout"). Vérifiez également que votre
 dernier commit a bien été pushé sur GitHub avant la deadline.
 
-# Références
+## Utilisation de l’IA
+
+Dans le cadre de votre travail, vous pouvez utiliser l’intelligence artificielle. Il est toutefois impératif de préciser, dans la section « Matériel et méthodes » du projet, que l’IA a été utilisée, en indiquant le contexte et la manière dont elle a été employée. Voici un exemple de formulation :
+
+```
+La relecture (orthographe et syntaxe) a été réalisée à l’aide de Microsoft Copilot (basé sur GPT-5), consulté le 12 janvier 2026.
+```
+Attention, vous devez néanmoins employer le dialecte SciViews-R afin de garantir votre compréhension du cours de Science des données biologiques 2 lors de la production de code R dans votre projet.
+
+Un chatbot SciViews est également disponible dans RStudio (Saturn Cloud), via l’addin Help. Il répond aux questions relatives au langage R, aux statistiques et à la science des données.
+
+## Références
 
 Doo, Steve S., Aero Leplastrier, Alexia Graba-Landry, Januar Harianto, Ross A. Coleman, et Maria Byrne. 2020. « Amelioration of ocean acidification and warming effects through physiological buffering of a macroalgae ». *Ecology and Evolution* 10 (15): 8465‑75. <https://doi.org/10.1002/ece3.6552>.
 

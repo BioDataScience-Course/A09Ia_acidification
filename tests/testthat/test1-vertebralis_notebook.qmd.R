@@ -183,7 +183,7 @@ test_that("Chunks 'test1choice', 'test1hypo', 'anova1', 'test1comment' : Premier
 })
 
 test_that("Chunks 'normal1', 'homos1', 'test1appli' : Vérification des conditions du premier test sans l'hôte", {
-  expect_true(is_identical_to_ref("normal1"))
+  expect_true(is_equal_to_ref("normal1"))
   # Le graphique est incorrect dans le chunk 'normal1'
   # Vous devez réaliser un graphique quantile-quantile relatif à votre ANOVA
 
@@ -329,7 +329,7 @@ test_that("Chunks 'test2choice', 'test2hypo', 'anova2', 'test2comment' : Test av
 })
 
 test_that("Chunks 'normal2', 'homos2', 'test2appli' : Vérification des conditions du test avec l'hôte", {
-  expect_true(is_identical_to_ref("normal2"))
+  expect_true(is_equal_to_ref("normal2"))
   # Le graphique est incorrect dans le chunk 'normal2'
   # Vous devez réaliser un graphique quantile-quantile relatif à votre ANOVA.
 
@@ -381,12 +381,14 @@ test_that("Chunks 'test2bhoice', 'test2bhypo', 'kruskal2', 'test2bcomment' : tes
   # cette aide plus tard dans le travail de groupe ou les interrogations !
 })
 
-test_that("La partie discussion et conclusion est-elle remplie ?", {
-  expect_true(!(rmd_select(vertebralis, by_section("Discussion et conclusions")) |>
-      as_document() |> grepl("...Votre discussion ici...", x = _,
-        fixed = TRUE) |> any()))
-  # La discussion et les conclusions ne sont pas faites
-  # Remplacez "...Votre discussion ici..." par vos phrases de commentaires
-  # libres (à noter que le contenu de cette section n'est pas évalué
-  # automatiquement, mais il le sera par vos enseignants).
+test_that("Chunks 'discucomment' : discussion et conclusion sur cette étude", {
+  expect_true(is_identical_to_ref("discucomment"))
+  # La discussion et les conclusions sont (partiellement) fausse
+  # dans le chunk 'discucomment'
+  # Vous devez cochez les phrases qui décrivent le test d'un 'x' entre les
+  # crochets [] -> [x]. Ensuite, vous devez recompiler la version HTML du
+  # bloc-notes (bouton 'Rendu') sans erreur pour réactualiser les résultats.
+  # Assurez-vous de bien comprendre ce qui est coché ou pas : vous n'aurez plus
+  # cette aide plus tard dans le travail de groupe ou les interrogations !
 })
+

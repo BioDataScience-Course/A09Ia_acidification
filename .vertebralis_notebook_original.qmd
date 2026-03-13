@@ -26,22 +26,35 @@ Le but de notre étude consiste, sur base des résultats de l'étude précédent
 
 Les auteurs de l'étude citée dans l'introduction ont publié leurs données sous licence CC0 1.0 [@2021Doodata]. Nous utiliserons ici les mesures relatives à la croissance moyenne journalière.
 
-L'analyse est réalisée avec le logiciel R (`r R.version.string`) et en particulier les packages {inferit} version `r packageVersion("inferit")` et {modelit} version `r packageVersion("modelit")` dans la [SciViews Box 2024](https://www.sciviews.org/software/svbox/). [Saturn Cloud](https://saturncloud.io/) (Linux Ubuntu 22.04) est utilisé pour exécuter le code et compiler la version HTML de ce bloc-notes.
+L'analyse est réalisée avec le logiciel R (`r R.version.string`) et en particulier les packages {inferit} version `r packageVersion("inferit")` et {modelit} version `r packageVersion("modelit")` dans la [SciViews Box 2025](https://www.sciviews.org/software/svbox/). [Saturn Cloud](https://saturncloud.io/) (Linux Ubuntu 22.04) est utilisé pour exécuter le code et compiler la version HTML de ce bloc-notes.
 
-Le seuil $\alpha$ de tous les tests est fixé à l'avance à 5%.
-
-# Résultats
-
-Voici la description des variables relatives au jeu de données complet :
+Le seuil $\alpha$ du test est fixé à l'avance à 5%.
 
 ```{r setup, include=FALSE}
 # Ceci est nécessaire pour les tests SDD, ne pas utiliser dans un "vrai" projet
 if (!"tools:tests" %in% search())
   source(here::here("tests/tools_tests.R"), attach(NULL, name = "tools:tests"))
 
+# Configure Knitr pour utiliser AGG comme périphérique graphique
+knitr::opts_chunk$set(dev = "ragg_png")
+
 # Configuration de l'environnement SciViews::R
-SciViews::R("infer", "model", lang = "fr")
+SciViews::R("___", lang = "fr")
 ```
+
+<!--% Spécifier si vous avez employé l'intelligence artificielle dans votre projet. -->
+
+```{r ai_comment, output='asis'}
+select_answer(r"-{
+[] -   Ce document a été rédigé en étant assisté par l'Intelligence Artificielle.
+[] -   Ce document a été rédigé sans recours à l'Intelligence Artificielle.}-")
+```
+
+<!-- Précisez ci-dessous l'utilisation que vous avez faite de l'IA. Citez le modèle utilisé. -->
+
+# Résultats
+
+Voici la description des variables relatives au jeu de données complet :
 
 <!--% Importez le tableau `growth.rds` depuis le dossier `data` et décrivez-le à l'aide de la fonction `skimr::skim()`. -->
 
@@ -80,6 +93,7 @@ En voici les caractéristiques principales :
 ```{r table1, warning=FALSE, record='RODFS', object='growth1_tab'}
 growth1 %>.%
   ___(., ___) %>.%
+  unlabelise(., "Wet_Weight") %>.%
   ___(.,
     'Croissance Moyenne [%]' = ___,
     'Écart-type [%]'         = ___,
@@ -97,6 +111,8 @@ chart(data = ___, ___) +
   ___(geom = "point", fun = "mean", color = "red", size = 3) +
   geom_hline(yintercept = 0, linetype = "dashed")
 ```
+
+<!--# Les conditions sont pour rappel les suivantes : 'n' pour naturel, 't' pour temp. élevée, 'p' pour pH bas et 'tp' pour les deux.  -->
 
 ```{r desc1comment, output='asis'}
 select_answer(r"-{
@@ -146,7 +162,7 @@ Voici le résultat du test :
 
 ```{r anova1, warning=FALSE, record='ROP', object='growth1_anova', arg='terms'}
 growth1_anova <- ___
-___(growth1_anova) |> tabularise()
+___(growth1_anova) |> tabularise(origdata = growth1)
 ```
 
 ```{r test1comment, output='asis'}
@@ -167,7 +183,7 @@ select_answer(r"-{
 
 <!--% Tracez ici le graphique ad hoc. -->
 
-```{r normal1, record='RNP', arg='labels'}
+```{r normal1, record='RNCS', arg='no.data'}
 ___
 ```
 
@@ -307,6 +323,7 @@ En voici les caractéristiques principales :
 ```{r table2, warning=FALSE, record='RODFS', object='growth2_tab'}
 growth2 %>.%
   ___(., ___) %>.%
+  unlabelise(., "Wet_Weight") %>.%
   ___(.,
     'Croissance Moyenne [%]' = ___,
     'Écart-type [%]'         = ___,
@@ -373,7 +390,7 @@ Voici le résultat du test :
 
 ```{r anova2, warning=FALSE, record='ROP', object='growth1_anova', arg='terms'}
 growth2_anova <- ___
-___(growth2_anova) |> ___()
+___(growth2_anova) |> tabularise(origdata =growth2)
 ```
 
 ```{r test2comment, output='asis'}
@@ -464,9 +481,25 @@ select_answer(r"-{
 
 # Discussion et conclusions
 
-<!--% Concluez votre travail en trois phrases maximum. La température et/ou le pH ont-ils un effet sur la croissance de *M. vertebralis* ? Dans quel sens ? La présence ou l'absence de l'hôte *L. intricata* modifie-t-elle cet effet ? -->
+<!--% Discutez des résultats obtenus au regard du but de l'étude.-->
 
-...Votre discussion ici...
+```{r discucomment, output='asis'}
+select_answer(r"-{
+select_answer(r"-{
+[] -   En absence de l’hôte *L. intricata*, aucune des conditions expérimentales ne modifie significativement la croissance de *M. vertebralis*.
+[] -   En absence de l’hôte *L. intricata*, un pH bas entraîne une baisse significative de la croissance.
+[] -   En absence de l’hôte *L. intricata*, la température élevée réduit significativement la croissance.
+[] -   En absence de l’hôte, la combinaison pH bas + température élevée produit l’effet négatif le plus marqué.
+
+[] -   En présence de *L. intricata*, aucune des conditions expérimentales ne modifie significativement la croissance de *M. vertebralis*.
+[] -   En présence de *L. intricata*, un pH bas entraîne une baisse significative de la croissance.
+[] -   En présence de *L. intricata*, la température élevée réduit significativement la croissance.
+[] -   En absence de l’hôte, la combinaison pH bas + température élevée produit l’effet négatif le plus marqué.
+
+[] -   L’hôte *L. intricata* semble amortir ou compenser l’effet négatif d’un pH bas sur la croissance du foraminifère.
+[] -   La présence de l’hôte *L. intricata* amplifie les effets du pH bas et de la température.
+}-")
+```
 
 # Références
 

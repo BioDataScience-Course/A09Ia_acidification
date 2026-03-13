@@ -18,15 +18,16 @@ growth <- read("data/raw/Doo_Eco-Evol_Data_Final.xlsx",
 
 # Note: on utilise sub() pour éliminer "pH" ou "temp" des noms de niveaux
 growth %>.%
-  smutate(.,
-    pH          = as.factor(sub("pH", "", pH)),
-    Temp        = as.factor(sub("temp", "", Temp)),
-    Association = as.factor(Association)) %>.%
-  smutate(.,
-    Condition = factor(paste0(Temp, pH))) ->
+  mutate_(.,
+    pH          = ~ as.factor(sub("pH", "", pH)),
+    Temp        = ~ as.factor(sub("temp", "", Temp)),
+    Association = ~ as.factor(Association)) %>.%
+  mutate_(.,
+    Condition = ~ factor(paste0(Temp, pH))) ->
   growth
+
 # Changement des niveaux de 'Condition' pour des codes plus courts
-# 'n' for naturel, 't' for temp. élevée, 'p' pour pH bas et 'tp' pour les deux
+# 'n' pour naturel, 't' pour temp. élevée, 'p' pour pH bas et 'tp' pour les deux
 levels(growth$Condition) <- c("n", "p", "t", "tp")
 
 # Ajout des labels --------------------------------------------------------
