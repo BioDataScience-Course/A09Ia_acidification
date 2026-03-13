@@ -52,7 +52,6 @@ select_answer(r"-{
 
 <!-- Précisez ci-dessous l'utilisation que vous avez faite de l'IA. Citez le modèle utilisé. -->
 
-
 # Résultats
 
 Voici la description des variables relatives au jeu de données complet :
@@ -94,6 +93,7 @@ En voici les caractéristiques principales :
 ```{r table1, warning=FALSE, record='RODFS', object='growth1_tab'}
 growth1 %>.%
   ___(., ___) %>.%
+  unlabelise(., "Wet_Weight") %>.%
   ___(.,
     'Croissance Moyenne [%]' = ___,
     'Écart-type [%]'         = ___,
@@ -323,6 +323,7 @@ En voici les caractéristiques principales :
 ```{r table2, warning=FALSE, record='RODFS', object='growth2_tab'}
 growth2 %>.%
   ___(., ___) %>.%
+  unlabelise(., "Wet_Weight") %>.%
   ___(.,
     'Croissance Moyenne [%]' = ___,
     'Écart-type [%]'         = ___,
