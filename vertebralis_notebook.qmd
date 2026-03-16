@@ -39,7 +39,7 @@ if (!"tools:tests" %in% search())
 knitr::opts_chunk$set(dev = "ragg_png")
 
 # Configuration de l'environnement SciViews::R
-SciViews::R("___", lang = "fr")
+SciViews::R("___", "___", lang = "fr")
 ```
 
 <!--% Spécifier si vous avez employé l'intelligence artificielle dans votre projet. -->
@@ -388,7 +388,7 @@ Voici le résultat du test :
 
 <!--% Réalisez votre test en utilisant la variable `Condition` pour les groupes (qui est la combinaison de la variable `Temp` et de la variable `pH`). Sortez ce résultat de manière formatée à l'aide de `tabularise()`. -->
 
-```{r anova2, warning=FALSE, record='ROP', object='growth1_anova', arg='terms'}
+```{r anova2, warning=FALSE, record='ROP', object='growth2_anova', arg='terms'}
 growth2_anova <- ___
 ___(growth2_anova) |> tabularise(origdata =growth2)
 ```
@@ -411,7 +411,7 @@ select_answer(r"-{
 
 <!--% Tracez ici le graphique ad hoc. -->
 
-```{r normal2, record='RNP', arg='labels'}
+```{r normal2, record='RNCS', arg='no.data'}
 ___
 ```
 
